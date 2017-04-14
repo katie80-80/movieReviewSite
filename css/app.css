@@ -1,0 +1,126 @@
+.boxHelper
+{
+	background-color: #000;
+	color:#fff;
+	text-align:center;
+}
+.mainHeader{
+	background-image: url("../img/header-image.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.logo{
+	padding-top: 15%;
+	padding-bottom: 15%;
+}
+a, h3, input{
+	font-family: "bebas-neue";
+	font-size: 3.565em;
+	color: #000000;
+}
+p{
+	font-family: "roboto";
+}
+ul{
+	margin-left: 0;
+}
+.filterNav{
+	text-align: center;
+}
+.filterNav ul li{
+	display: inline;
+}
+
+.filterNav ul li a{
+	padding: 5px;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+
+
+
+
+
+
+
+
+.videos{
+	width: 100%;
+	margin-top: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+.commBut{
+	font-family: "bebas-neue";
+	font-size: 3.565em;
+	color: #000000;
+	border-style: solid;
+	text-align: center;
+}
+.commBut p{
+	font-family: "bebas-neue";
+	margin: 0;
+}
+
+
+
+
+
+
+
+
+
+.commentHeading{
+	font-family: "roboto";
+	text-align: center;
+}
+.formField{
+	width: 80%;
+	margin-left: 10%;
+	border-top-style: none;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	box-shadow: none;
+}
+.comSubmit{
+	font-size: 1.5em;
+	border-style: solid;
+	background-color: #fff;
+	border-color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+.mainFooter{
+	background-color: #7e7e7e;
+	margin-top: 20px;
+}
+.logoFoot{
+	padding-top: 5%;
+	padding-bottom: 2%;
+}
+.tmText{
+	font-family: "bebas-neue" ;
+	text-align: center;
+	color: #c2c0c4;
+	display: inline;
+}
