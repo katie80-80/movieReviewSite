@@ -14,6 +14,7 @@
     $col3 = "cat_name";
     $filter = $_GET['filter'];
     $getMovies = filterType($tbl1, $tbl2, $tbl3, $col1, $col2, $col3, $filter);
+
   }else{
     $tbl = "tbl_movies";
     $getMovies = getAll($tbl);
@@ -24,10 +25,22 @@
 
 		$username = $_POST['reviews_user'];
 		$comment = $_POST['reviews_content'];
-		$uploadComment = addComment($username,$comment);
+    $movee = $_POST['reviews_movie'];
+		$uploadComment = addComment($username,$comment,$movee);
 		$message = $uploadComment;
 	}
 
+?>
+
+<?php
+if(isset($_GET['filter'])) {
+  $tbl1 = "tbl_Reviews";
+  $filter = $_GET['filter'];
+  $getReviews = filterType($tbl1, $tbl2, $tbl3, $col1, $col2, $col3, $filter);
+}else{
+  $tbl = "tbl_reviews";
+  $getReviews = getAll($tbl);
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -50,11 +63,10 @@
   <nav class="filterNav s">
   <h2 class="hide">TLDR Navigation</h2>
     <ul>
-      <li><a href="index.php?filter=action">Action</a></li>
-      <li><a href="index.php?filter=comedy">Comedy</a></li>
+      <li><a href="index.php">All</a></li>
       <li><a href="index.php?filter=family">Family</a></li>
       <li><a href="index.php?filter=horror">Horror</a></li>
-      <li><a href="index.php">All</a></li>
+
     </ul>
   </nav>
   <!-- <section class="row"> -->
@@ -67,18 +79,11 @@
               </video>";
         echo "<h3 class=\"small-12 columns\">{$row['movies_title']}</h3>";
         echo "<p>{$row['movies_storyline']}</p>";
-        echo "<div class=\"commBut small-10 small-pull-1 columns\"><p>COMMENTS</p></div>";
-      echo "</section>";
-      echo "<section class=\"commentSection hide row\">";
-      echo "<h2 class=\"hide\">Comments</h2>";
-        echo "<h3 class=\"small-4 small-push-1 columns\">BONERCHAMP69</h3>";
-        echo "<p class=\"small-10 small-pull-1 columns\">Lorem Khaled Ipsum is a major key to success. Hammock talk come soon. The key is to drink coconut, fresh coconut, trust me. Life is what you make it, so let’s make it. Bless up. You see the hedges, how I got it shaped up? It’s important to shape up your hedges, it’s like getting a haircut, stay fresh. Hammock talk come soon. The key to more success is to get a massage once a week, very important, major key, cloth talk. The key is to drink coconut, fresh coconut, trust me. I’m up to something.</p>";
+
       echo "</section>";
     }
   }
   ?>
-
-
 
 
   <!-- <div class="boxHelper small-10 small-push-1 columns"><p>This is a video</p></div>
@@ -95,12 +100,37 @@
     <p>Lorem Khaled Ipsum is a major key to success. Hammock talk come soon. The key is to drink coconut, fresh coconut, trust me. Life is what you make it, so let’s make it. Bless up. You see the hedges, how I got it shaped up? It’s important to shape up your hedges, it’s like getting a haircut, stay fresh. Hammock talk come soon. The key to more success is to get a massage once a week, very important, major key, cloth talk. The key is to drink coconut, fresh coconut, trust me. I’m up to something.</p>
     </div>
   </section> -->
+  <br></br>
 
-  <section class="commentingSection hide">
-  <h2 class="commentHeading small-12 columns">Comment</h2>
+    <section class="row">
+    <div class="commBut small-12 columns">
+      <p>COMMENTS</p>
+    </div>
+  </section>
+
+  <br></br><br></br>
+
+  <section class="commentSection hide">
+    <div class="row">
+    <h2 class="small-12 text-center comments">Comments:</h2>
+    <?php
+    if(!is_string($getReviews)){
+              while($row = mysqli_fetch_array($getReviews)){
+                echo "<div><h2 class=\"small-10 small-push-1\">{$row['reviews_user']}:</h2><h2 class=\"small-10 small-push-1 movee\">{$row['reviews_movie']}</h2><p class=\"small-10 small-push-1\">{$row['reviews_content']}</p>";
+              }
+            }else{
+              echo "<p>{$getReviews}</p>";
+            }
+
+    ?>
+  </div>
+
+  <h2 class="commentHeading small-12 columns">Make A Comment</h2>
 
     <form class="row" action="index.php" method="post" enctype="multipart/form-data">
       <input type="text" name="reviews_user" value="" placeholder="username" class="formField">
+
+      <input type="text" name="reviews_movie" value="" placeholder="movie title" class="formField">
 
       <textarea type="text" name="reviews_content" placeholder="comment" class="formField"></textarea>
 

@@ -7,11 +7,11 @@
 		}
 	}
 
-	function addComment($username,$comment) {
+	function addComment($username,$comment,$movee) {
 		include("connect.php");
 
 
-					$qstring = "INSERT INTO tbl_reviews VALUES(NULL,'{$comment}','{$username}')";
+					$qstring = "INSERT INTO tbl_reviews VALUES(NULL,'{$comment}','{$username}','{$movee}')";
 					$result = mysqli_query($link, $qstring);
 
 					if ($result == 1) {

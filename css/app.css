@@ -38,7 +38,11 @@ ul{
 }
 
 
-
+.comDiv
+{
+	background-color: #D3D3D3;
+	border-bottom: 2px solid #000;
+}
 
 
 
@@ -123,4 +127,10 @@ ul{
 	text-align: center;
 	color: #c2c0c4;
 	display: inline;
+}
+
+.movee
+{
+	font-size: 2rem;
+	font-weight: 200;
 }
