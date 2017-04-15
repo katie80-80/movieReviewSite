@@ -19,6 +19,15 @@
     $getMovies = getAll($tbl);
   }
 
+  if(isset($_POST['submit'])) {
+		//echo "submit clicked...";
+
+		$username = $_POST['reviews_user'];
+		$comment = $_POST['reviews_content'];
+		$uploadComment = addComment($username,$comment);
+		$message = $uploadComment;
+	}
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -78,7 +87,7 @@
 
   <div class="commBut small-10 small-pull-1 columns"><p>COMMENTS</p></div> -->
   <!-- </section> -->
-  
+
 <!--   <section class="commentSection hide row">
   <h2 class="hide">Comments</h2>
     <div class="comment small-12 columns">
@@ -86,24 +95,27 @@
     <p>Lorem Khaled Ipsum is a major key to success. Hammock talk come soon. The key is to drink coconut, fresh coconut, trust me. Life is what you make it, so let’s make it. Bless up. You see the hedges, how I got it shaped up? It’s important to shape up your hedges, it’s like getting a haircut, stay fresh. Hammock talk come soon. The key to more success is to get a massage once a week, very important, major key, cloth talk. The key is to drink coconut, fresh coconut, trust me. I’m up to something.</p>
     </div>
   </section> -->
-  
+
   <section class="commentingSection hide">
   <h2 class="commentHeading small-12 columns">Comment</h2>
-    <form class="row">
-      <input type="text" name="username" value="" placeholder="username" class="formField">
-      <textarea type="text" name="comment" placeholder="comment" class="formField"></textarea>
+
+    <form class="row" action="index.php" method="post" enctype="multipart/form-data">
+      <input type="text" name="reviews_user" value="" placeholder="username" class="formField">
+
+      <textarea type="text" name="reviews_content" placeholder="comment" class="formField"></textarea>
+
       <input type="submit" name="submit" value="SUBMIT" class="comSubmit small-2 small-pull-5 columns">
     </form>
   </section>
-  
+
 
   <footer class="mainFooter row">
   <img src="img/logo.png" alt="logo" class="logoFoot small-2 small-push-5 columns">
   <p class="tmText small-12 columns">COPYRIGHT TLDR ALL RIGHTS RESERVED</p>
-    
+
   </footer>
 
-    
+
 
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/what-input.min.js"></script>
